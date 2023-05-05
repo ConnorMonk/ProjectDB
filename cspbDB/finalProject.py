@@ -99,11 +99,7 @@ db.execute('''
 db.execute('''CREATE INDEX i_employee ON employee (last_name, first_name);''')
 
     
-# TODO
 # SHOW SQL statements and accompanying code for all table creation, 
-# insertion of initial data, updates, and queries.
-
-# TODO
 # INSERT INITIAL DATA
 db.execute('''
     INSERT INTO department (name, location)
@@ -117,13 +113,6 @@ db.execute('''
     INSERT INTO department (name, location)
     VALUES ('Sales', 'California');
     ''')
-
-# TODO
-# QUERIES
-
-    # TODO
-    # GROUPING RESULTS
-
 
 # insertion functions  
 def create_employee(first_name,last_name,phone,position,salary=80000,department_id=2):
@@ -143,18 +132,6 @@ def delete_employee(employee_id):
         DELETE FROM employee
         WHERE id = {employee_id};
         ''')
-
-
-
-
-
-
-
-
-
-
-
-
 
 #Team 1
 #department 1 means John Johnson is the manager.
@@ -178,10 +155,6 @@ assign_schedule(5)
 assign_schedule(6)
 assign_schedule(7)
 
-
-
-
-
 # Show trigger firing that updates avg_salary of department
 avg_sal = db.execute('''
                      SELECT avg_salary
@@ -189,8 +162,6 @@ avg_sal = db.execute('''
                      ''')
 
 print(f'avg_salary by department after first team is created = {db.fetchall()}\n')
-
-
 
 # Team 2
 create_employee('Jane', 'Jackson', '11111111', 'Manager', 200000, 1) 
@@ -223,6 +194,10 @@ print(f'avg_salary by department after second team is created= {db.fetchall()}\n
 
 # Show all the employees with active schedules.
 
+# QUERIES
+# JOINS
+# GROUPING 
+
 test = db.execute('''
     SELECT COUNT(*)
     FROM employee
@@ -254,12 +229,7 @@ test = db.execute('''
 
 print(f'Number of employees currently on payroll {db.fetchall()}\n')
 
-
-
-
-
 # Show all the employees with active schedules.
-
 test = db.execute('''
     SELECT employee.id,first_name
     FROM employee
@@ -272,7 +242,6 @@ test = db.execute('''
 print('\n#######################################################')
 print(f'\nAll employees currently on payroll {db.fetchall()}\n')
 
-
 db.execute('''
     SELECT department.name AS department, COUNT(*) AS num_employees
     FROM employee
@@ -280,9 +249,7 @@ db.execute('''
     GROUP BY department.name;
     ''')
 
-
 print(f'Number of employees in each department = {db.fetchall()}\n')
-
 
 db.execute('''
            SELECT salary, employee.first_name
